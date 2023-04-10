@@ -1,0 +1,47 @@
+body {
+    font-size: 1.4em;
+    font-family: monospace;
+    background-color: gainsboro;
+}
+.centered-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 100vh;
+}
+
+input, button, textarea {
+    font-size: 1.1em;
+    font-family: monospace;
+    margin-bottom: 1em;
+}
+
+input, textarea {
+    width: 100%;
+}
+
+input:invalid {
+    background-color: ivory;
+    border: none;
+    outline: 2px solid red;
+    border-radius: 5px;
+}
+
+
+
+.radioinput {
+    width: initial;
+}
+
+ul {
+    text-decoration: none;
+    list-style: none;
+    text-align: left;
+}
+li {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
