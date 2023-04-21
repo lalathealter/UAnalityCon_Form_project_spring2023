@@ -12,21 +12,23 @@ PORT=os.getenv('PORT')
 DATABASE_NAME=os.getenv('DATABASE_NAME')
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql://{USERNAME}:{PASSWORD}@{HOST}:{PORT}/{DATABASE_NAME}'
+app.config['SQLALCHEMY_DATABASE_URI'] = \
+    'mysql://{0}:{1}@{2}:{3}/{4}'.format(
+    USERNAME, PASSWORD, HOST, PORT, DATABASE_NAME 
+)
 
 # db = SQLAlchemy(app)
 
 @app.route("/", methods=['GET', 'POST'])
 def form():
-    match request.method:
-        case "POST":
-            
-            data = (request.form.to_dict(flat=False))
-            print(data)
-            # save_visitor_data(data)
-            return render_template("accept.html")
-        case _:
-            return render_template("form.html")
+    if request.method == "POST":
+        
+        data = (request.form.to_dict(flat=False))
+        print(data)
+        # save_visitor_data(data)
+        return render_template("accept.html")
+    else:
+        return render_template("form.html")
 
 
 # def save_visitor_data(datadict: dict):
