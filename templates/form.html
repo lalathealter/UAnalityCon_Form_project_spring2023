@@ -3,7 +3,7 @@
 {% block body %}
     <form action="/" method="post">
         <div align="center">
-            <h1>UAnalityCon - Форма участника</h1>
+            <h1>UAnalityCon - Форма {{ "участника" if is_for_participants else "слушателя" }}</h1>
             <br>
 
             <input 
@@ -34,6 +34,22 @@
                 id="email">
             <br>
 
+            <input 
+                required
+                placeholder="Место работы/учёбы" 
+                type="text" 
+                name="place_of_work" 
+                id="place_of_work">
+            <br>
+            
+            <input 
+                required
+                placeholder="Должность" 
+                type="text" 
+                name="position" 
+                id="position">
+            <br>
+            {% if is_for_participants %}
             <fieldset>
                 <label for="acad_degree_russian">Учёная степень:</label>
                 <select 
@@ -100,7 +116,7 @@
                 id="position_english">
             <br>
             <fieldset>
-                <label for="acad_degree_english">Учёная степень на английском:</label>
+                <label for="acad_degree_english">Учёная степень на английском языке:</label>
                 <select 
                     required 
                     name="acad_degree_english" 
@@ -112,7 +128,7 @@
             </fieldset>
             <br>
             <fieldset>
-                <label for="acad_rank_english">Учёное звание на английском:</label>
+                <label for="acad_rank_english">Учёное звание на английском языке:</label>
                 <select 
                     required 
                     name="acad_rank_english" 
@@ -178,6 +194,8 @@
                 <label for="report_type_poster">Постерный</label>
             </fieldset>
             <br>
+
+            {% endif %}
 
             <button type="submit">
                 отправить

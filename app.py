@@ -1,6 +1,6 @@
 import os
 from flask import Flask
-from flask import request, render_template
+from flask import request, redirect, render_template
 from flask_sqlalchemy import SQLAlchemy
 from dotenv import load_dotenv
 
@@ -20,7 +20,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = \
 # db = SQLAlchemy(app)
 
 @app.route("/", methods=['GET', 'POST'])
-def form():
+def main_page():
     if request.method == "POST":
         
         data = (request.form.to_dict(flat=False))
@@ -28,8 +28,15 @@ def form():
         # save_visitor_data(data)
         return render_template("accept.html")
     else:
-        return render_template("form.html")
+        return redirect("/form_for_participants")
 
+@app.route("/form_for_participants")
+def form_participants():
+    return render_template("form.html", is_for_participants=True)
+
+@app.route("/form_for_attendees")
+def form_attendees():
+    return render_template("form.html", is_for_participants=False)
 
 # def save_visitor_data(datadict: dict):
 #     vdata = VisitorData(datadict)
