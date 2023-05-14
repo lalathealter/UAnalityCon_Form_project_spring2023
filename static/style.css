@@ -1,8 +1,22 @@
 body {
     font-size: 1.4em;
     font-family: monospace;
-    background-color: gainsboro;
+    margin: 0px;
+    padding: 0px;
+    color: #212529;
 }
+
+nav {
+    background: #212529;
+    padding: 10px;
+}
+nav a {
+    color: white;
+    padding: 5px;
+    text-decoration: none;
+    font-size: 20px;
+}
+
 .centered-box {
     display: flex;
     flex-direction: column;
