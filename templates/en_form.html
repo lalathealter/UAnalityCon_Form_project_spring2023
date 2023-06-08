@@ -1,0 +1,143 @@
+
+{% extends "en_base.html" %}
+{% block body %}
+    <form action="/" method="post">
+        <div align="center">
+            <h1>UAnalityCon - {{ "Partipicant" if is_for_participants else "Listener" }} form</h1>
+            <br>
+
+            <input 
+                required
+                placeholder="Surname" 
+                type="text" 
+                name="lname_russian" 
+                id="lname_russian">
+            <br>
+            <input 
+                required
+                placeholder="Name" 
+                type="text" 
+                name="fname_russian" 
+                id="fname_russian">
+            <br>
+            <input 
+                placeholder="Patronymic (if any)" 
+                type="text" 
+                name="patronym_russian" 
+                id="patronym_russian">
+            <br>
+            <input 
+                required
+                placeholder="Email" 
+                type="email" 
+                name="email" 
+                id="email">
+            <br>
+
+            <input 
+                required
+                placeholder="Place of work/study" 
+                type="text" 
+                name="place_of_work" 
+                id="place_of_work">
+            <br>
+            
+            <input 
+                required
+                placeholder="Position" 
+                type="text" 
+                name="position" 
+                id="position">
+            <br>
+            {% if is_for_participants %}
+            <fieldset>
+                <label for="acad_degree_russian">Academic degree:</label>
+                <select 
+                    required 
+                    name="acad_degree_russian" 
+                    id="acad_degree_russian">
+                    <option value="Отсутствует">None</option>
+                    <option value="Доктор наук">Doctorate</option>
+                    <option value="Кандидат наук">Professorship</option>
+                </select>
+            </fieldset>
+            <br>
+
+            <fieldset>
+                <label for="acad_rank_russian">Academic rank:</label>
+                <select 
+                    required 
+                    name="acad_rank_russian" 
+                    id="acad_rank_russian">
+                    <option value="Отсутствует">None</option>
+                    <option value="Доцент">Docent</option>  
+                    <option value="Профессор">Professor</option>
+                </select>
+            </fieldset>
+            <br>
+            <input 
+                required
+                placeholder="Phone number" 
+                type="tel" 
+                name="phone_number" 
+                id="phone_number"
+                pattern="[+]{0,1}[0-9]{1,3}[0-9]{10}"
+            >
+            <br>           
+
+            <input 
+                required
+                placeholder="Title of the report" 
+                type="text" 
+                name="report_name_russian" 
+                id="report_name_russian">
+            <br>
+
+            <textarea 
+                name="coauthors_info" 
+                id="coauthors_info" 
+                placeholder="Information about co-authors (if any): full name, place of work / study, position, academic degree, academic rank"
+                cols="50" 
+                rows="12"></textarea>
+            <br>
+
+            <textarea 
+                required
+                name="report_thesis" 
+                id="report_thesis" 
+                placeholder="Abstract text field (Maximum characters: 3072)"
+                cols="50" 
+                rows="12"
+                maxlength="3072"
+                ></textarea>
+            <br>
+
+            <fieldset>
+                <legend>Form of presentation of the report:</legend>
+                <input 
+                    type="radio" 
+                    name="report_type" 
+                    id="report_type_section"
+                    value="section"
+                    class="radioinput"
+                    required>
+                <label for="report_type_section">Sectional</label>
+                
+                <input 
+                    type="radio" 
+                    name="report_type" 
+                    id="report_type_poster"
+                    value="poster"
+                    class="radioinput">
+                <label for="report_type_poster">Poster</label>
+            </fieldset>
+            <br>
+
+            {% endif %}
+
+            <button type="submit">
+                Send
+            </button>
+        </div>
+    </form>
+{% endblock %}
